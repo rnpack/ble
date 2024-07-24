@@ -1,6 +1,6 @@
 {
   "name": "@rnpack/ble",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ble utils",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
