@@ -1,27 +1,21 @@
 import { useEffect, useRef } from 'react';
+
 import type {
   Subscription,
   BleError,
   Characteristic,
-  DeviceId,
-  UUID,
 } from 'react-native-ble-plx';
 
 import { useBleManagerContext } from './useBleManagerContext';
 
-interface StartBleMonitorArgs {
-  deviceId: DeviceId;
-  serviceUUID: UUID;
-  characteristicUUID: UUID;
-  onChangeDeviceCharacteristic: (characteristic: Characteristic) => void;
-}
+import type { StartBleMonitorArgs } from '../../types';
 
-interface UseBleMonitorReturnType {
+interface UseBleMonitorReturns {
   startBleMonitor: (args: StartBleMonitorArgs) => void;
   stopBleMonitor: () => void;
 }
 
-function useBleMonitor(): UseBleMonitorReturnType {
+function useBleMonitor(): UseBleMonitorReturns {
   const { bleManager } = useBleManagerContext();
 
   const bleMonitorListener = useRef<Subscription>();
@@ -61,5 +55,5 @@ function useBleMonitor(): UseBleMonitorReturnType {
   return { startBleMonitor, stopBleMonitor };
 }
 
-export type { UseBleMonitorReturnType, StartBleMonitorArgs };
+export type { UseBleMonitorReturns };
 export { useBleMonitor };

@@ -1,16 +1,13 @@
 import { useEffect } from 'react';
-import type { BleError, Device, ScanOptions, UUID } from 'react-native-ble-plx';
+
+import type { BleError, Device } from 'react-native-ble-plx';
 
 import { useBleManagerContext } from './useBleManagerContext';
 
-interface StartBleScanArgsType {
-  uuids?: UUID[];
-  scanOptions?: ScanOptions;
-  scanDuration?: number;
-}
+import type { StartBleScanArgs } from '../../types';
 
-interface UseBleScanReturnType {
-  startBleScan: (args?: StartBleScanArgsType) => Promise<void>;
+interface UseBleScanReturns {
+  startBleScan: (args?: StartBleScanArgs) => Promise<void>;
   stopBleScan: () => Promise<void>;
 }
 
@@ -20,7 +17,7 @@ interface UseBleScanProps {
   onBleScanStop?: () => void;
 }
 
-function useBleScan(props?: UseBleScanProps): UseBleScanReturnType {
+function useBleScan(props?: UseBleScanProps): UseBleScanReturns {
   const { bleManager } = useBleManagerContext();
 
   useEffect(() => {
@@ -30,7 +27,7 @@ function useBleScan(props?: UseBleScanProps): UseBleScanReturnType {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function startBleScan(args?: StartBleScanArgsType): Promise<void> {
+  async function startBleScan(args?: StartBleScanArgs): Promise<void> {
     try {
       console.info('Ble scan starting...');
       props?.onBleScanStart?.();
@@ -78,5 +75,5 @@ function useBleScan(props?: UseBleScanProps): UseBleScanReturnType {
 
   return { startBleScan, stopBleScan };
 }
-export type { StartBleScanArgsType, UseBleScanReturnType, UseBleScanProps };
+export type { UseBleScanReturns, UseBleScanProps };
 export { useBleScan };

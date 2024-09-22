@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react';
-import type { Device } from 'react-native-ble-plx';
 import { isEmpty } from '@rnpack/utils';
+
+import type { Device } from 'react-native-ble-plx';
 
 import type { DeviceType } from '../../types';
 
-interface UseBleListReturnType {
+interface UseBleListReturns {
   devices: Array<DeviceType>;
   addDevice: (device: Device) => void;
   resetDeviceList: () => void;
@@ -14,7 +15,7 @@ interface UseBleListProps {
   updateFoundedDevicesList: (devices: Array<DeviceType>) => void;
 }
 
-function useBleList(props: UseBleListProps): UseBleListReturnType {
+function useBleList(props: UseBleListProps): UseBleListReturns {
   const devices = useRef<Array<DeviceType>>([]);
 
   useEffect(() => {
@@ -58,5 +59,5 @@ function useBleList(props: UseBleListProps): UseBleListReturnType {
   return { devices: devices?.current, addDevice, resetDeviceList };
 }
 
-export type { UseBleListReturnType, UseBleListProps };
+export type { UseBleListReturns, UseBleListProps };
 export { useBleList };

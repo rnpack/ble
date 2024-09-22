@@ -1,21 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTimer, structuredClone } from '@rnpack/utils';
 
-interface ProcessBleOperationArgs {
-  operation: Array<string>;
-}
+import type {
+  ProcessBleOperationArgs,
+  ProcessBleOperationMessageArgs,
+  ProcessMessageToBleArgs,
+} from '../../types';
 
 interface UseBleOperationProcessReturns {
-  procesBleOperation: (args: ProcessBleOperationArgs) => void;
+  processBleOperation: (args: ProcessBleOperationArgs) => void;
   stopBleResponseTimer: () => void;
-  processBleOperationMessage: (args: { isNext: boolean }) => Promise<void>;
+  processBleOperationMessage: (
+    args: ProcessBleOperationMessageArgs
+  ) => Promise<void>;
   onReceivedBleResponse: () => Promise<void>;
 }
 
 interface UseBleOperationProcessProps {
-  sendMessageToBle: (message: string) => Promise<void>;
-  onNoResponse: (message: string) => void;
+  processMessageToBle: (args: ProcessMessageToBleArgs) => Promise<void>;
+  onNoResponse?: (message: string) => void;
   bleResponseWaitTimeLimit: number;
+  deviceId?: string;
 }
 
 function useBleOperationProcess(
@@ -43,7 +48,7 @@ function useBleOperationProcess(
     console.info('Remaing time for ble response: ', { minutes, seconds });
     if (minutes <= 0 && seconds <= 0 && hasMessageSent?.current) {
       if (operation?.current?.[0]) {
-        props?.onNoResponse(operation?.current[0]);
+        props?.onNoResponse?.(operation?.current[0]);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -58,15 +63,15 @@ function useBleOperationProcess(
     return time?.getTime();
   }
 
-  function procesBleOperation(args: ProcessBleOperationArgs): void {
+  function processBleOperation(args: ProcessBleOperationArgs): void {
     operation.current = structuredClone(args?.operation) as Array<string>;
 
-    processBleOperationMessage({ isNext: false });
+    processBleOperationMessage({ isNext: false, isTimmer: args?.isTimmer });
   }
 
-  async function processBleOperationMessage(args: {
-    isNext: boolean;
-  }): Promise<void> {
+  async function processBleOperationMessage(
+    args: ProcessBleOperationMessageArgs
+  ): Promise<void> {
     if (!operation?.current) {
       console.info('Invalid operations');
       return;
@@ -81,6 +86,10 @@ function useBleOperationProcess(
       operation.current.shift();
     }
 
+    if (args?.message) {
+      operation.current.splice(0, 1, args?.message);
+    }
+
     if (!(operation?.current?.length > 0)) {
       console.info('No next operation found');
       return;
@@ -91,9 +100,11 @@ function useBleOperationProcess(
     if (message) {
       hasMessageSent.current = true;
 
-      await props?.sendMessageToBle(message);
+      await props?.processMessageToBle({ message });
 
-      startBleResponseTimer();
+      if (args?.isTimmer !== false) {
+        startBleResponseTimer();
+      }
     }
   }
 
@@ -108,13 +119,14 @@ function useBleOperationProcess(
   }
 
   async function onReceivedBleResponse(): Promise<void> {
+    stopBleResponseTimer();
     hasMessageSent.current = false;
 
     await processBleOperationMessage({ isNext: true });
   }
 
   return {
-    procesBleOperation,
+    processBleOperation,
     stopBleResponseTimer,
     processBleOperationMessage,
     onReceivedBleResponse,

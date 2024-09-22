@@ -4,22 +4,16 @@ import type {
   Device,
   DeviceId,
   Service,
-  UUID,
 } from 'react-native-ble-plx';
 
 import { useBleManagerContext } from './useBleManagerContext';
 
-interface RequestMTUForDeviceArgs {
-  deviceId: DeviceId;
-  mtu: number;
-}
+import type {
+  RequestMTUForDeviceArgs,
+  CharacteristicsForDeviceArgs,
+} from './../../types';
 
-interface CharacteristicsForDeviceArgs {
-  deviceId: DeviceId;
-  serviceUUID: UUID;
-}
-
-interface UseBleServiceReturnType {
+interface UseBleServiceReturns {
   discoverAllServicesAndCharacteristicsForDevice: (
     deviceId: DeviceId
   ) => Promise<Device | void>;
@@ -32,7 +26,7 @@ interface UseBleServiceReturnType {
   ) => Promise<Characteristic[] | void>;
 }
 
-function useBleService(): UseBleServiceReturnType {
+function useBleService(): UseBleServiceReturns {
   const { bleManager } = useBleManagerContext();
 
   const bleMgr: BleManager = bleManager as BleManager;
@@ -120,9 +114,5 @@ function useBleService(): UseBleServiceReturnType {
   };
 }
 
-export type {
-  UseBleServiceReturnType,
-  RequestMTUForDeviceArgs,
-  CharacteristicsForDeviceArgs,
-};
+export type { UseBleServiceReturns };
 export { useBleService };

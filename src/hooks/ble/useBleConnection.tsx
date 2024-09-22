@@ -1,18 +1,10 @@
-import type {
-  BleManager,
-  ConnectionOptions,
-  Device,
-  DeviceId,
-} from 'react-native-ble-plx';
+import type { BleManager, Device, DeviceId } from 'react-native-ble-plx';
 
 import { useBleManagerContext } from './useBleManagerContext';
 
-interface ConnectToDeviceArgs {
-  deviceId: DeviceId;
-  options?: ConnectionOptions;
-}
+import type { ConnectToDeviceArgs } from '../../types';
 
-interface UseBleConnectionReturnType {
+interface UseBleConnectionReturns {
   connectToDevice: (deviceId: DeviceId) => Promise<Device>;
   cancelDeviceConnection: (deviceId: DeviceId) => Promise<Device>;
 }
@@ -87,5 +79,5 @@ function useBleConnection(props?: UseBleConnectionProps) {
   return { connectToDevice, cancelDeviceConnection };
 }
 
-export type { UseBleConnectionReturnType };
+export type { UseBleConnectionReturns, UseBleConnectionProps };
 export { useBleConnection };

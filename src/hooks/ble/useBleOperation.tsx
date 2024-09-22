@@ -1,27 +1,16 @@
-import type {
-  Base64,
-  BleManager,
-  Characteristic,
-  DeviceId,
-  UUID,
-} from 'react-native-ble-plx';
+import type { BleManager, Characteristic } from 'react-native-ble-plx';
 
 import { useBleManagerContext } from './useBleManagerContext';
 
-interface SendMessageToBleArgs {
-  deviceId: DeviceId;
-  message: Base64;
-  serviceUUID: UUID;
-  characteristicUUID: UUID;
-}
+import type { SendMessageToBleArgs } from '../../types';
 
-interface UseBleOperationReturnType {
+interface UseBleOperationReturns {
   sendMessageToBle: (
     args: SendMessageToBleArgs
   ) => Promise<Characteristic | void>;
 }
 
-function useBleOperation(): UseBleOperationReturnType {
+function useBleOperation(): UseBleOperationReturns {
   const { bleManager } = useBleManagerContext();
 
   const bleMgr: BleManager = bleManager as BleManager;
@@ -52,5 +41,5 @@ function useBleOperation(): UseBleOperationReturnType {
   return { sendMessageToBle };
 }
 
-export type { SendMessageToBleArgs, UseBleOperationReturnType };
+export type { SendMessageToBleArgs, UseBleOperationReturns };
 export { useBleOperation };

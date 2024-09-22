@@ -1,11 +1,11 @@
 import { BleManager } from 'react-native-ble-plx';
 import type { BleRestoredState } from 'react-native-ble-plx';
 
-interface UseBleManagerReturnType {
+interface UseBleManagerReturns {
   bleManager: BleManager;
 }
 
-function useBleManager(): UseBleManagerReturnType {
+function useBleManager(): UseBleManagerReturns {
   const bleManager: BleManager = new BleManager({
     restoreStateFunction,
     restoreStateIdentifier: '',
@@ -18,5 +18,5 @@ function useBleManager(): UseBleManagerReturnType {
   return { bleManager };
 }
 
-export type { UseBleManagerReturnType };
+export type { UseBleManagerReturns };
 export { useBleManager };
