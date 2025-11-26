@@ -26,7 +26,7 @@ interface UseBleOperationProcessProps {
 function useBleOperationProcess(
   props: UseBleOperationProcessProps
 ): UseBleOperationProcessReturns {
-  const operation = useRef<Array<string>>();
+  const operation = useRef<Array<string>>(null);
   const hasMessageSent = useRef<boolean>(false);
 
   const [bleResponseDuration, setBleResponseDuration] = useState<number>();

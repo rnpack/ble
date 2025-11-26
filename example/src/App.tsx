@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { BleManagerProvider } from '@rnpack/ble';
 
 export default function App() {
@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
   },
   text: {

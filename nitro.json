@@ -1,0 +1,17 @@
+{
+  "cxxNamespace": ["rnpack_ble"],
+  "ios": {
+    "iosModuleName": "Ble"
+  },
+  "android": {
+    "androidNamespace": ["rnpack","ble"],
+    "androidCxxLibName": "rnpack_ble"
+  },
+  "autolinking": {
+    "Ble": {
+      "swift": "Ble",
+      "kotlin": "Ble"
+    }
+  },
+  "ignorePaths": ["node_modules"]
+}

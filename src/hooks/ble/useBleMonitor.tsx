@@ -18,7 +18,7 @@ interface UseBleMonitorReturns {
 function useBleMonitor(): UseBleMonitorReturns {
   const { bleManager } = useBleManagerContext();
 
-  const bleMonitorListener = useRef<Subscription>();
+  const bleMonitorListener = useRef<Subscription | undefined>(null);
 
   useEffect(() => {
     return () => {
