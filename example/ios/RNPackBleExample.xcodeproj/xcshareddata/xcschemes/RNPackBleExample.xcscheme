@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "BleExample.app"
-               BlueprintName = "BleExample"
-               ReferencedContainer = "container:BleExample.xcodeproj">
+               BuildableName = "RNPackBleExample.app"
+               BlueprintName = "RNPackBleExample"
+               ReferencedContainer = "container:RNPackBleExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "BleExampleTests.xctest"
-               BlueprintName = "BleExampleTests"
-               ReferencedContainer = "container:BleExample.xcodeproj">
+               BuildableName = "RNPackBleExampleTests.xctest"
+               BlueprintName = "RNPackBleExampleTests"
+               ReferencedContainer = "container:RNPackBleExample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "BleExample.app"
-            BlueprintName = "BleExample"
-            ReferencedContainer = "container:BleExample.xcodeproj">
+            BuildableName = "RNPackBleExample.app"
+            BlueprintName = "RNPackBleExample"
+            ReferencedContainer = "container:RNPackBleExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "BleExample.app"
-            BlueprintName = "BleExample"
-            ReferencedContainer = "container:BleExample.xcodeproj">
+            BuildableName = "RNPackBleExample.app"
+            BlueprintName = "RNPackBleExample"
+            ReferencedContainer = "container:RNPackBleExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

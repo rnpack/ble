@@ -1,6 +1,6 @@
 #include <jni.h>
-#include "rnpack_bleOnLoad.hpp"
+#include "rnpackbleOnLoad.hpp"
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void*) {
-  return margelo::nitro::rnpack_ble::initialize(vm);
+  return margelo::nitro::rnpackble::initialize(vm);
 }

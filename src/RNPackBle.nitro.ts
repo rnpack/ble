@@ -1,5 +1,6 @@
 import type { HybridObject } from 'react-native-nitro-modules';
 
-export interface Ble extends HybridObject<{ ios: 'swift'; android: 'kotlin' }> {
+export interface RNPackBle
+  extends HybridObject<{ ios: 'swift'; android: 'kotlin' }> {
   multiply(a: number, b: number): number;
 }

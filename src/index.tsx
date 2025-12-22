@@ -1,10 +1,11 @@
 import { NitroModules } from 'react-native-nitro-modules';
-import type { Ble } from './Ble.nitro';
+import type { RNPackBle } from './RNPackBle.nitro';
 
-const BleHybridObject = NitroModules.createHybridObject<Ble>('Ble');
+const RNPackBleHybridObject =
+  NitroModules.createHybridObject<RNPackBle>('RNPackBle');
 
 export function multiply(a: number, b: number): number {
-  return BleHybridObject.multiply(a, b);
+  return RNPackBleHybridObject.multiply(a, b);
 }
 
 export * from './hooks';

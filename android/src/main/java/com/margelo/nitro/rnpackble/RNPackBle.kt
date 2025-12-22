@@ -1,9 +1,9 @@
-package com.margelo.nitro.rnpack.ble
+package com.margelo.nitro.rnpackble
   
 import com.facebook.proguard.annotations.DoNotStrip
 
 @DoNotStrip
-class Ble : HybridBleSpec() {
+class RNPackBle : HybridRNPackBleSpec() {
   override fun multiply(a: Double, b: Double): Double {
     return a * b
   }

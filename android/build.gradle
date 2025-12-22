@@ -1,6 +1,6 @@
 buildscript {
   ext.getExtOrDefault = {name ->
-    return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['Ble_' + name]
+    return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['RNPackBle_' + name]
   }
 
   repositories {
@@ -22,16 +22,16 @@ def reactNativeArchitectures() {
 
 apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
-apply from: '../nitrogen/generated/android/rnpack_ble+autolinking.gradle'
+apply from: '../nitrogen/generated/android/rnpackble+autolinking.gradle'
 
 apply plugin: "com.facebook.react"
 
 def getExtOrIntegerDefault(name) {
-  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["Ble_" + name]).toInteger()
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["RNPackBle_" + name]).toInteger()
 }
 
 android {
-  namespace "com.margelo.nitro.rnpack.ble"
+  namespace "com.margelo.nitro.rnpackble"
 
   compileSdkVersion getExtOrIntegerDefault("compileSdkVersion")
 

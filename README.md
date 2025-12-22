@@ -4,11 +4,16 @@ Ble utils
 
 ## Installation
 
-
 ```sh
 npm install @rnpack/ble react-native-nitro-modules
 
 > `react-native-nitro-modules` is required as this library relies on [Nitro Modules](https://nitro.margelo.com/).
+```
+
+## Install dependencies
+
+```sh
+npm install @rnpack/utils buffer react-native-ble-plx
 ```
 
 

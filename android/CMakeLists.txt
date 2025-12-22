@@ -1,7 +1,7 @@
-project(rnpack_ble)
+project(rnpackble)
 cmake_minimum_required(VERSION 3.9.0)
 
-set(PACKAGE_NAME rnpack_ble)
+set(PACKAGE_NAME rnpackble)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_CXX_STANDARD 20)
 
@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 20)
 add_library(${PACKAGE_NAME} SHARED src/main/cpp/cpp-adapter.cpp)
 
 # Add Nitrogen specs :)
-include(${CMAKE_SOURCE_DIR}/../nitrogen/generated/android/rnpack_ble+autolinking.cmake)
+include(${CMAKE_SOURCE_DIR}/../nitrogen/generated/android/rnpackble+autolinking.cmake)
 
 # Set up local includes
 include_directories("src/main/cpp" "../cpp")

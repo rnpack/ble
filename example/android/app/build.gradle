@@ -77,9 +77,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "rnpack.ble.example"
+    namespace "rnpackble.example"
     defaultConfig {
-        applicationId "rnpack.ble.example"
+        applicationId "rnpackble.example"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

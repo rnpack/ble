@@ -1,17 +1,24 @@
 {
-  "cxxNamespace": ["rnpack_ble"],
+  "cxxNamespace": [
+    "rnpackble"
+  ],
   "ios": {
-    "iosModuleName": "Ble"
+    "iosModuleName": "RNPackBle"
   },
   "android": {
-    "androidNamespace": ["rnpack","ble"],
-    "androidCxxLibName": "rnpack_ble"
+    "androidNamespace": [
+      "rnpackble"
+    ],
+    "androidCxxLibName": "rnpackble"
   },
   "autolinking": {
-    "Ble": {
-      "swift": "Ble",
-      "kotlin": "Ble"
+    "RNPackBle": {
+      "swift": "RNPackBle",
+      "kotlin": "RNPackBle"
     }
   },
-  "ignorePaths": ["node_modules"]
+  "ignorePaths": [
+    "node_modules",
+    "example/node_modules"
+  ]
 }
